@@ -6,9 +6,13 @@ FREEZE_BRANCH = 'gh-pages'
 
 
 def commit_source():
-    source_message = raw_input("Enter a source commit message:  ")
-    local("git add -A && git commit -m \"%s\"" % source_message)
-    local("git push origin master")
+    local("git add -A")
+    # Test for uncommited changes (avoid error or empty commit)
+    if local("git diff-index --quiet HEAD"):
+        message = raw_input("Enter a source commit message:  ")
+        local("git commit -m \"%s\"" % message)
+        local("git push origin master")
+
 
 
 def freeze():
@@ -17,10 +21,13 @@ def freeze():
 
 
 def commit_static():
-    with lcd(freeze_folder):
-        static_message = raw_input("Enter a webpage commit message:  ")
-        local("git add -A && git commit -m \"%s\"" % static_message)
-        local("git push origin %s" % freeze_branch)
+    with lcd(FREEZE_FOLDER):
+        local("git add -A")
+        # Test for uncommited changes (avoid error or empty commit)
+        if local("git diff-index --quiet HEAD"):
+            message = raw_input("Enter a webpage commit message:  ")
+            local("git commit -m \"%s\"" % message)
+            local("git push origin %s" % FREEZE_BRANCH)
 
 
 def deploy():
