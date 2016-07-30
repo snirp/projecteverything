@@ -1,14 +1,82 @@
-* {
+*,
+*:after,
+*:before {
   margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  font-size: 18px;
-  background-color: #ECFFBA;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #404040;
+    background-color: #F9F9F9;
+    counter-reset: steps;
 }
 
-h1, p {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 8px 0;
+p, h1 {
+    margin: 6px;
+    line-height: 1.3em;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 1.4em;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+em {
+    font-weight: 700;
+}
+
+header {
+    text-align: center;
+}
+
+#content {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+ol#steps {
+    list-style-type: none;
+}
+
+ol#steps li:before {
+    padding-left: 11px;
+    padding-top: 3px;
+    margin: 10px;
+    counter-increment: steps;
+    content: counter(steps);
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: #38a696;
+    border-radius: 50%;
+}
+
+ol#steps li {
+    color: #38a696;
+}
+
+
+#teaserimg {
+    width:100%;
+}
+
+.question label {
+    display: block;
+    text-align:center;
+    padding: 10px;
+    margin:0 auto;
+    min-width: 300px;
+}
+
+.question label input {
+    margin-right: 15px;
 }
