@@ -13,6 +13,7 @@ app.config['FREEZER_RELATIVE_URLS'] = True
 def index():
     return render_template('index.html')
 
+
 #launch
 if __name__ == "__main__":
     app.run(debug=True)
