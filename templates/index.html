@@ -1,10 +1,51 @@
 {% extends 'base.html' %}
+{% block head %}
+{{ super () }}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename="js/ajaxchimp.js") }}"></script>
+
+    <!--
+    <script>
+    // ajaxChimp implementation
+    $( document ).ready(function() {
+        $('#mc-embedded-subscribe-form').ajaxChimp();
+    });
+    </script>
+    -->
+
+    <!--
+    <script>
+    // custom implementation
+
+    $( document ).ready(function() {
+        console.log( "Jquery document ready!" );
+
+        function logResults(json){
+            console.log(json);
+        }
+
+        $("#mc-embedded-subscribe-form").submit(function(e) {
+            var $this = $(this);
+            var submitdata = $this.serialize()
+            $.getJSON(
+                "http://projecteverything.us13.list-manage.com/subscribe/post-json?u=b1badd77d68346efcf77245e9&amp;id=424d192888&c=?", submitdata
+            ).done(function( data ) {
+                    console.log(data)
+                });
+
+        });
+
+    });
+    </script>
+    -->
+
+{% endblock %}
 {% block content %}
     <header>[logo]</header>
 
     <div class="pure-g" id="content">
         <div class="pure-u-1 pure-u-md-3-5">
-            <h1>An app for every thing.</h1>
+            <h1>This changes every thing.</h1>
             <p>Everything will be a free app to organize your possessions. Customer support,
                 documentation and receipts will always be there for you. We are working to
                 improve how you can use, share and maintain your things!
@@ -312,14 +353,14 @@
         <li><input type="checkbox" value="32" name="group[5221][32]" id="mce-group[5221]-5221-5"><label for="mce-group[5221]-5221-5">Reliable sharing</label></li>
         <li><input type="checkbox" value="64" name="group[5221][64]" id="mce-group[5221]-5221-6"><label for="mce-group[5221]-5221-6">Second hand market</label></li>
     </ul>
-    </div>
-        <div id="mce-responses" class="clear">
-            <div class="response" id="mce-error-response" style="display:none"></div>
-            <div class="response" id="mce-success-response" style="display:none"></div>
-        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1badd77d68346efcf77245e9_424d192888" tabindex="-1" value=""></div>
-        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </form>
+</div>
+<div id="mce-responses" class="clear">
+    <div class="response" id="mce-error-response" style="display:none"></div>
+    <div class="response" id="mce-success-response" style="display:none"></div>
+</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1badd77d68346efcf77245e9_424d192888" tabindex="-1" value=""></div>
+<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
 
 
 
