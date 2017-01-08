@@ -22,7 +22,7 @@ def thanks():
     return render_template('thanks.html')
 
 @app.route("/confirm.html")
-def thanks():
+def confirm():
     return render_template('confirm.html')
 
 #launch
