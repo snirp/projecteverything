@@ -13,6 +13,10 @@ app.config['FREEZER_RELATIVE_URLS'] = True
 def index():
     return render_template('index.html')
 
+@app.route("/interview.html")
+def interview():
+    return render_template('interview.html')
+
 @app.route("/thanks.html")
 def thanks():
     return render_template('thanks.html')
