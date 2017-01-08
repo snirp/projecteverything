@@ -21,6 +21,9 @@ def interview():
 def thanks():
     return render_template('thanks.html')
 
+@app.route("/confirm.html")
+def thanks():
+    return render_template('confirm.html')
 
 #launch
 if __name__ == "__main__":
