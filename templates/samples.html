@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    * {padding:0;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+.onoffswitch {
+    position: relative; width: 130px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "SOLVE THIS!";
+    padding-left: 10px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "NO THANKS";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 20px; margin: 5px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 96px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0;
+}
+    </style>
+</head>
+<body>
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+
+<!--Range slider-->
+http://thenewcode.com/757/Playing-With-The-HTML5-range-Slider-Input
+http://www.html5tutorial.info/html5-range.php
+http://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value
+
+<!--Range slider polyfill-->
+http://rangeslider.js.org/
+
+
+  <h1>MySliderValue</h1>
+
+  <div style="position:relative; margin:auto; width:90%">
+    <output style="position:absolute; min-width:100px; height:20px; text-align: center;" id="myValue"></output>
+    <input type="range" id="myRange" min="0" max="200" step="5" style="width:80%" value="80">
+  </div>
+
+<script type="text/javascript" charset="utf-8">
+var myRange = document.querySelector('#myRange');
+var myValue = document.querySelector('#myValue');
+var trackLength = myValue.offsetWidth;
+console.log(trackLength);
+console.log(myRange.valueAsNumber);
+
+var off = myRange.clientWidth / (parseInt(myRange.max) - parseInt(myRange.min));
+var px =  ((myRange.value - parseInt(myRange.min)) * off) - (trackLength / 2) + 10;
+
+myValue.style.left = px + 'px';
+myValue.style.top = -myRange.offsetHeight - 5 + 'px';
+myValue.innerHTML = myRange.value;
+
+myRange.oninput = function(){
+    px = ((myRange.value - parseInt(myRange.min)) * off) - (trackLength / 2) + 10;
+    myValue.innerHTML = myRange.value;
+    myValue.style.left = px + 'px';
+};
+</script>
+
+
+
+
+</body>
+</html>

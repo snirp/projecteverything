@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block head %}
 {{ super () }}
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename="js/ajaxchimp.js") }}"></script>
 
-    <!--
+<script src="https://use.fontawesome.com/bf73623cd0.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+        crossorigin="anonymous"></script>
+
+
+<!--
+    <script src="{{ url_for('static', filename="js/ajaxchimp.js") }}"></script>
     <script>
     // ajaxChimp implementation
     $( document ).ready(function() {
@@ -37,149 +41,466 @@
 
     });
     </script>
-    -->
+-->
+    <script>
+        //update the output tag with the value of the input:range element
+        function outputUpdate(val, target) {
+            document.querySelector(target).value = val;
+        }
+    </script>
 
 {% endblock %}
 {% block content %}
-    <header>[logo]</header>
-
-    <div class="pure-g" id="content">
-        <div class="pure-u-1 pure-u-md-3-5">
-            <h1>This changes every thing.</h1>
-            <p>Everything will be a free app to organize your possessions. Customer support,
-                documentation and receipts will always be there for you. We are working to
-                improve how you can use, share and maintain your things!
-            </p>
-            <ol id="steps">
-                <li>Add your things to Everything</li>
-                <li>Take care of every thing</li>
-            </ol>
+<div class="custom-wrapper pure-g" id="menu">
+    <div class="pure-u-1 pure-u-md-1-3">
+        <div class="pure-menu">
+            <a href="#" class="pure-menu-heading custom-brand">
+                <img src="{{ url_for('static', filename='images/logo_wit.png') }}" id="logo">
+            </a>
+            <a href="#" class="custom-toggle" id="toggle">
+                <s class="bar"></s>
+                <s class="bar"></s></a>
         </div>
-        <div class="pure-u-1 pure-u-md-2-5">
-            <img src="{{ url_for('static', filename='images/phone_ui.png') }}" id="teaserimg">
-        </div>
-
-
-<!-- Begin MailChimp Signup Form -->
-<form action="//projecteverything.us13.list-manage.com/subscribe/post?u=b1badd77d68346efcf77245e9&amp;id=424d192888" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate pure-u-1" target="_blank" novalidate>
-
-<div class="">
-    <label for="mce-EMAIL">Email address</label>
-    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-</div>
- <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1badd77d68346efcf77245e9_424d192888" tabindex="-1" value=""></div>
-<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-</form>
-
-
-
-
-
-
-        <!--
+    </div>
+    <div class="pure-u-1 pure-u-md-2-3 pure-g">
         <div class="pure-u-1">
-            Please help us prioritize so we can develop the app around your wishes. We will
-            reward the first 1000 people to sign up with early access when we launch.
+            <div class="pure-menu pure-menu-horizontal custom-menu-right custom-can-transform">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item custom-small-menu-item custom-item-transform"><a href="#" class="pure-menu-link">Team</a></li>
+                    <li class="pure-menu-item custom-small-menu-item custom-item-transform"><a href="#" class="pure-menu-link">Blog</a></li>
+                    <li class="pure-menu-item custom-small-menu-item custom-item-transform"><a href="#" class="pure-menu-link">Contact</a></li>
+                    <li class="pure-menu-item custom-small-menu-item custom-item-transform"><div class="pure-menu-link">
+                            EN / NL
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="pure-u-1 question">
-            <p>
-                A user manual comes in a dozen languages, 11 of which aren't mine. <em>This is just a
-                huge waste of paper and energy</em>. And whenever you actually need the manual, it is
-                nowhere to be found.
+        <div class="pure-u-1">
+            <div class="pure-menu pure-menu-horizontal custom-menu-right custom-can-transform">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">For my products</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Press</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="pure-g content">
+    <div class="pure-u-1 pure-u-md-3-5">
+        <h1>This changes every thing.</h1>
+        <p>You should never again lose a receipt, warranty or manual. We are building the Everything app to take care of that and more.
+            It will simply be a list that holds all your things. This allows you to better use, share and maintain your things.
+        </p>
+        <ol id="steps">
+            <li>Add your things to Everything</li>
+            <li>Take care of every thing</li>
+        </ol>
+        <a href="#mc-embedded-subscribe-form" id="call-to-action">Register for early access</a>
+        <p class="small">We need to hear from you how you are going to use Everything. Register now to let us know and we will make
+            Everything the way you want it to be. The first 500 users to register will get early access to Everything.
+        </p>
+
+    </div>
+    <div class="pure-u-1 pure-u-md-2-5 center">
+        <img src="{{ url_for('static', filename='images/phone_ui.png') }}" id="teaserimg">
+    </div>
+</div>
+
+<div class="features">
+    <div class="pure-g content center">
+        <div class="pure-u-1 pure-u-md-1-3">
+            <p class="accent-color">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                    <i class="fa fa-graduation-cap fa-stack-1x"></i>
+                </span>
             </p>
-            <label><input type="checkbox">This is a problem worth solving</label>
+            <h2>Smarter things</h2>
+            <p>You can connect through any of your things. Talk to the manufacturer or get the needed updates and safety warnings. Connect
+                with your fellow users to share opinions or user stories.
+            </p>
         </div>
-        <div class="pure-u-1 question">
-            <p>
-                Warranty information and receipts are important, but easily misplaced. This can lead
-                to costly mistakes. That shoebox, the binder or the trashcan just doesn't cut it.
-           </p>
-            <label><input type="checkbox">This is a problem worth solving</label>
+        <div class="pure-u-1 pure-u-md-1-3">
+            <p class="accent-color">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                    <i class="fa fa-camera fa-stack-1x"></i>
+                </span>
+            </p>
+            <h2>Easy adding</h2>
+            <p>Adding anything should not be harder than taking a picture or scanning the barcode. We are working
+                to make it even easier than that.</p>
         </div>
-        -->
-
-
-    <!-- Begin MailChimp Signup Form -->
-
-        <hr>
-
-<form action="//projecteverything.us13.list-manage.com/subscribe/post?u=b1badd77d68346efcf77245e9&amp;id=424d192888" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate pure-u-1" target="_blank" novalidate>
-
-
-<div class="mc-field-group input-group">
-    <strong>User manuals </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QMANUALS" id="mce-QMANUALS-0"><label for="mce-QMANUALS-0">Yes, solve this.</label></li>
-        <li><input type="radio" value="No" name="QMANUALS" id="mce-QMANUALS-1"><label for="mce-QMANUALS-1">No, not a problem.</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Receipts </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QRECEIPTS" id="mce-QRECEIPTS-0"><label for="mce-QRECEIPTS-0">Yes</label></li>
-        <li><input type="radio" value="No" name="QRECEIPTS" id="mce-QRECEIPTS-1"><label for="mce-QRECEIPTS-1">No</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Organize possessions </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QORGANIZE" id="mce-QORGANIZE-0"><label for="mce-QORGANIZE-0">Yes</label></li>
-        <li><input type="radio" value="No" name="QORGANIZE" id="mce-QORGANIZE-1"><label for="mce-QORGANIZE-1">No</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Wish list </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="MWISHLIST" id="mce-MWISHLIST-0"><label for="mce-MWISHLIST-0">Yes</label></li>
-        <li><input type="radio" value="No" name="MWISHLIST" id="mce-MWISHLIST-1"><label for="mce-MWISHLIST-1">No</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Customer support </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QSUPPORT" id="mce-QSUPPORT-0"><label for="mce-QSUPPORT-0">Yes</label></li>
-        <li><input type="radio" value="No" name="QSUPPORT" id="mce-QSUPPORT-1"><label for="mce-QSUPPORT-1">No</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Sharing and renting </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QSHARING" id="mce-QSHARING-0"><label for="mce-QSHARING-0">Yes</label></li>
-        <li><input type="radio" value="No" name="QSHARING" id="mce-QSHARING-1"><label for="mce-QSHARING-1">No</label></li>
-    </ul>
-</div>
-<div class="mc-field-group input-group">
-    <strong>Second hand market </strong>
-    <ul>
-        <li><input type="radio" value="Yes" name="QMARKET" id="mce-QMARKET-0"><label for="mce-QMARKET-0">Yes</label></li>
-        <li><input type="radio" value="No" name="QMARKET" id="mce-QMARKET-1"><label for="mce-QMARKET-1">No</label></li>
-    </ul>
+        <div class="pure-u-1 pure-u-md-1-3">
+            <p class="accent-color">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                    <i class="fa fa-tags fa-stack-1x"></i>
+                </span>
+            </p>
+            <h2>Better organize</h2>
+            <p>The packing list for year next holiday will be breeze and you will always know where you stored everything. Save money
+                by making sure your things are well maintained and have all the right insurance.</p>
+        </div>
+    </div>
 </div>
 
-<!-- boilerplate form data -->
-<div id="mce-responses" class="clear">
-    <div class="response" id="mce-error-response" style="display:none"></div>
-    <div class="response" id="mce-success-response" style="display:none"></div>
-</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1badd77d68346efcf77245e9_424d192888" tabindex="-1" value=""></div>
-<div class="clear">
+<div class="pure-g content">
+<form action="//projecteverything.us13.list-manage.com/subscribe/post?u=b1badd77d68346efcf77245e9&amp;id=e86917a40f" method="post"
+      id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate pure-u-1" target="_blank" novalidate>
 
-<div class="">
-	<label for="mce-EMAIL">Email Address </label>
-	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-</div>
+    <div class="mc-field-group input-group">
+        <h3>Onboarding user 1-500</h3>
+        <p>The first 500 users will get early access to the free Everything app. We want to know what you think is important, so we can
+            make Everything the way you want it to be. Please answer the questions below for early access.</p>
+        <h4>Question 1/8</h4>
+        <p>We need you to help us prioritize. Please check all the problems below, which Everything should solve for you.</p>
+        <ul id="q-features">
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-0" class="pure-u-1 pure-u-md-4-5">We can make it really simple to <strong>keep track of
+                    your receipts and warranties</strong>. Have it all in one app instead of a shoe box so it is always there in case you
+                    need it.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="1" name="group[7261][1]" id="mce-group[7261]-7261-0"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-1" class="pure-u-1 pure-u-md-4-5">
+                    User manuals often come in a dozen languages, 11 of which aren't yours. Let's <strong>stop wasting paper and
+                    energy</strong> and always have the instructions at hand in the language you speak.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="17179869184" name="group[7261][17179869184]"
+                           id="mce-group[7261]-7261-1"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-2" class="pure-u-1 pure-u-md-4-5">We should have a simple way to <strong>organize</strong> our possesions. That
+                    should allow you to make a packing list for the holiday, organize a move or remember where you stored the ice
+                    skates.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="2" name="group[7261][2]" id="mce-group[7261]-7261-2"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-3" class="pure-u-1 pure-u-md-4-5">Why not also keep <strong>your wishlist</strong> on Everything? That way you will
+                    know what to ask or give for birthdays or receive updates when a product is available or on discount.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="8" name="group[7261][8]" id="mce-group[7261]-7261-3"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-4" class="pure-u-1 pure-u-md-4-5">Always have <strong>customer support</strong> ready when you need them. No
+                    looking up email addresses or navigating through phone menus. Simply click the item and send the question you
+                    need answered.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="4" name="group[7261][4]" id="mce-group[7261]-7261-4"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-5" class="pure-u-1 pure-u-md-4-5">Your <strong>fire, theft and travel insurances</strong> can become one-click and
+                    much more accurate. This should save a lot of time, money, discussion and hassle for all parties.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="34359738368" name="group[7261][34359738368]" id="mce-group[7261]-7261-5"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-6" class="pure-u-1 pure-u-md-4-5">We love sharing and it reduces consumption, but we need
+                    to <strong>make sharing our things more reliable</strong>. It helps to always know who has borrowed or rented your
+                    drill or book and when it is due back.
+                </label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="16" name="group[7261][16]" id="mce-group[7261]-7261-6"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-7" class="pure-u-1 pure-u-md-4-5">Current online <strong>second hand markets</strong> make it hard to find exactly
+                    what you want and are not always reliable. Let's make this function better and more direct - like Ticketswap or
+                    AirBnB.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="32" name="group[7261][32]" id="mce-group[7261]-7261-7"></div></li>
+            <li class="pure-g">
+                <label for="mce-group[7261]-7261-8" class="pure-u-1 pure-u-md-4-5">The avarge person loses $275,- worth of property per
+                    year, the vast majority never being returned. We need to rethink <strong>lost and found</strong> and increase the
+                    odds of getting your camera back.</label>
+                <div class="pure-u-1 pure-u-md-1-5">
+                    <input type="checkbox" value="68719476736" name="group[7261][68719476736]" id="mce-group[7261]-7261-8"></div></li>
+        </ul>
+    </div>
 
-<input type="submit" value="Ik doe mee!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    <div class="mc-field-group input-group">
+        <h4>Question 2/8</h4>
+        <p>For which products would you use Everything?</p>
+        <ul>
+            <li>
+                <input type="checkbox" value="64" name="group[7265][64]" id="mce-group[7265]-7265-0">
+                <label for="mce-group[7265]-7265-0">Tools</label></li>
+            <li>
+                <input type="checkbox" value="128" name="group[7265][128]" id="mce-group[7265]-7265-1">
+                <label for="mce-group[7265]-7265-1">Sporting gear (racket, boat)</label></li>
+            <li>
+                <input type="checkbox" value="256" name="group[7265][256]" id="mce-group[7265]-7265-2">
+                <label for="mce-group[7265]-7265-2">Travel and outdoor (suitcase, tent)</label></li>
+            <li>
+                <input type="checkbox" value="512" name="group[7265][512]" id="mce-group[7265]-7265-3">
+                <label for="mce-group[7265]-7265-3">Kitchen equipment (coffee maker, blender)</label></li>
+            <li>
+                <input type="checkbox" value="1024" name="group[7265][1024]" id="mce-group[7265]-7265-4">
+                <label for="mce-group[7265]-7265-4">Kitchen utensils (pans, knifes)</label></li>
+            <li>
+                <input type="checkbox" value="2048" name="group[7265][2048]" id="mce-group[7265]-7265-5">
+                <label for="mce-group[7265]-7265-5">Electronics (stereo, printer)</label></li>
+            <li>
+                <input type="checkbox" value="4096" name="group[7265][4096]" id="mce-group[7265]-7265-6">
+                <label for="mce-group[7265]-7265-6">Bicycle or baby stroller</label></li>
+            <li>
+                <input type="checkbox" value="8192" name="group[7265][8192]" id="mce-group[7265]-7265-7">
+                <label for="mce-group[7265]-7265-7">Books or art</label></li>
+            <li>
+                <input type="checkbox" value="16384" name="group[7265][16384]" id="mce-group[7265]-7265-8">
+                <label for="mce-group[7265]-7265-8">Furniture</label></li>
+            <li>
+                <input type="checkbox" value="32768" name="group[7265][32768]" id="mce-group[7265]-7265-9">
+                <label for="mce-group[7265]-7265-9">Clothing and accessories</label></li>
+        </ul>
+    </div>
 
+    <div class="mc-field-group size1of2">
+        <h4>Question 3/8</h4>
+        <label for="mce-ITEMCOUNT">How many things will you keep in Everything?</label>
+        <!--<input type="number" name="ITEMCOUNT" class="" value="" id="mce-ITEMCOUNT">-->
+        <input type="range" min="0" max="200" value="100" name="ITEMCOUNT" id="mce-ITEMCOUNT" step="5" oninput="outputUpdate(value,
+        '#itemcount-output')">
+        <output for="mce-ITEMCOUNT" id="itemcount-output">100</output>
+
+    </div>
+
+    <div class="mc-field-group size1of2">
+        <h4>Question 4/8</h4>
+        <label for="mce-DESIRE">How likely are you to use Everything (1-10)</label>
+        <!--<input type="number" name="DESIRE" class="" value="" id="mce-DESIRE">-->
+        <input type="range" min="0" max="10" value="5" name="DESIRE" id="mce-DESIRE" step="1" oninput="outputUpdate(value,
+        '#desire-output')">
+        <output for="mce-DESIRE" id="desire-output">5</output>
+    </div>
+
+    <div class="mc-field-group">
+        <h4>Question 5/8</h4>
+        <label for="mce-AVERSION">What would be a reason NOT to use Everything?</label>
+        <input type="text" value="" name="AVERSION" class="" id="mce-AVERSION">
+    </div>
+
+    <div class="mc-field-group input-group">
+        <h4>Question 6/8</h4>
+        <p>What describes your attitude towards things?</p>
+        <ul>
+            <li>
+                <input type="checkbox" value="8388608" name="group[7277][8388608]" id="mce-group[7277]-7277-0">
+                <label for="mce-group[7277]-7277-0">I gladly pay extra for high quality</label></li>
+            <li>
+                <input type="checkbox" value="8589934592" name="group[7277][8589934592]"
+                       id="mce-group[7277]-7277-1"><label for="mce-group[7277]-7277-1">I am an active bargain hunter</label></li>
+            <li>
+                <input type="checkbox" value="33554432" name="group[7277][33554432]" id="mce-group[7277]-7277-2">
+                <label for="mce-group[7277]-7277-2">My possessions reflect my personality</label></li>
+            <li>
+                <input type="checkbox" value="16777216" name="group[7277][16777216]" id="mce-group[7277]-7277-3">
+                <label for="mce-group[7277]-7277-3">I have a minimalistic lifestyle (own less)</label></li>
+            <li>
+                <input type="checkbox" value="67108864" name="group[7277][67108864]" id="mce-group[7277]-7277-4">
+                <label for="mce-group[7277]-7277-4">I keep my stuff well-maintained</label></li>
+            <li>
+                <input type="checkbox" value="134217728" name="group[7277][134217728]" id="mce-group[7277]-7277-5">
+                <label for="mce-group[7277]-7277-5">Environmental impact determines what I buy</label></li>
+        </ul>
+        <small>Choose at most 3 answers</small>
+    </div>
+
+    <div class="mc-field-group input-group">
+        <h4>Question 7/8</h4>
+        <p>Wich significant life events happened to you in the previous year, or will likely happen in the
+            next year?</p>
+        <ul>
+            <li>
+                <input type="checkbox" value="65536" name="group[7273][65536]" id="mce-group[7273]-7273-0">
+                <label for="mce-group[7273]-7273-0">Go on big trip</label></li>
+            <li>
+                <input type="checkbox" value="131072" name="group[7273][131072]" id="mce-group[7273]-7273-1">
+                <label for="mce-group[7273]-7273-1">Get married</label></li>
+            <li>
+                <input type="checkbox" value="262144" name="group[7273][262144]" id="mce-group[7273]-7273-2">
+                <label for="mce-group[7273]-7273-2">Have kids</label></li>
+            <li>
+                <input type="checkbox" value="524288" name="group[7273][524288]" id="mce-group[7273]-7273-3">
+                <label for="mce-group[7273]-7273-3">Divorce or separation</label></li>
+            <li>
+                <input type="checkbox" value="1048576" name="group[7273][1048576]" id="mce-group[7273]-7273-4">
+                <label for="mce-group[7273]-7273-4">Buy a house</label></li>
+            <li>
+                <input type="checkbox" value="2097152" name="group[7273][2097152]" id="mce-group[7273]-7273-5">
+                <label for="mce-group[7273]-7273-5">Change career</label></li>
+            <li>
+                <input type="checkbox" value="4194304" name="group[7273][4194304]" id="mce-group[7273]-7273-6">
+                <label for="mce-group[7273]-7273-6">Other event</label></li>
+        </ul>
+        <small>Choose all that apply</small>
+    </div>
+
+    <div class="mc-field-group input-group">
+        <h4>Question 8/8</h4>
+        <p>What phone apps did you use in the last week?</p>
+        <ul>
+            <li>
+                <input type="checkbox" value="268435456" name="group[7281][268435456]" id="mce-group[7281]-7281-0">
+                <label for="mce-group[7281]-7281-0">Banking</label></li>
+            <li>
+                <input type="checkbox" value="536870912" name="group[7281][536870912]" id="mce-group[7281]-7281-1">
+                <label for="mce-group[7281]-7281-1">Calendar</label></li>
+            <li>
+                <input type="checkbox" value="1073741824" name="group[7281][1073741824]" id="mce-group[7281]-7281-2">
+                <label for="mce-group[7281]-7281-2">To-do list</label></li>
+            <li>
+                <input type="checkbox" value="2147483648" name="group[7281][2147483648]" id="mce-group[7281]-7281-3">
+                <label for="mce-group[7281]-7281-3">Note keeping</label></li>
+            <li>
+                <input type="checkbox" value="137438953472" name="group[7281][137438953472]" id="mce-group[7281]-7281-4">
+                <label for="mce-group[7281]-7281-4">Task planning</label></li>
+            <li>
+                <input type="checkbox" value="274877906944" name="group[7281][274877906944]" id="mce-group[7281]-7281-5">
+                <label for="mce-group[7281]-7281-5">Fitness goals</label></li>
+        </ul>
+        <small>Choose all that apply</small>
+    </div>
+
+    <p>Finally we would like to know some personal details to complete the registration. We will not share any of your information with
+        others.</p>
+    <div class="mc-field-group">
+        <select name="EDUCATION" class="" id="mce-EDUCATION">
+            <option value="choose education level...">choose education level...</option>
+            <option value="Not finished Secondary">Not finished Secondary</option>
+            <option value="Secondary school">Secondary school</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master or Doctoral">Master or Doctoral</option>
+        </select>
+    </div>
+
+    <div class="mc-field-group">
+        <select name="FAMILY" class="" id="mce-FAMILY">
+            <option value="choose living situation...">choose living situation...</option>
+            <option value="with parents">With parents</option>
+            <option value="independently">Independently</option>
+            <option value="together">Together</option>
+            <option value="as a family">As a family</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="mc-field-group">
+        <select name="INCOME" class="" id="mce-INCOME">
+            <option value="choose household income...">choose household income...</option>
+            <option value="&lt; € 30,000">&lt; € 30,000</option>
+            <option value="€ 30,000 - € 60,000">€ 30,000 - € 60,000</option>
+            <option value="€ 60,000 - € 90,000">€ 60,000 - € 90,000</option>
+            <option value="&gt; € 90,000">&gt; € 90,000</option>
+            <option value="rather not say">I rather not tell</option>
+        </select>
+    </div>
+
+    <div class="mc-field-group input-group">
+        <ul>
+            <li>
+                <input type="radio" value="Male" name="GENDER" id="mce-GENDER-0">
+                <label for="mce-GENDER-0">Male</label></li>
+            <li>
+                <input type="radio" value="Female" name="GENDER" id="mce-GENDER-1">
+                <label for="mce-GENDER-1">Female</label></li>
+        </ul>
+    </div>
+
+    <div class="mc-field-group size1of2">
+        <label for="mce-BIRTHDAY-month">Date of birth</label>
+        <div class="datefield">
+                <span class="subfield dayfield">
+                    <input class="datepart " type="text" pattern="[0-9]*" value=""
+                           placeholder="DD" size="2" maxlength="2" name="BIRTHDAY[day]"
+                           id="mce-BIRTHDAY-day"></span> /
+                <span class="subfield monthfield">
+                    <input class="datepart " type="text" pattern="[0-9]*" value=""
+                           placeholder="MM" size="2" maxlength="2" name="BIRTHDAY[month]"
+                           id="mce-BIRTHDAY-month"></span> /
+                <span class="subfield yearfield">
+                    <input class="datepart " type="text" pattern="[0-9]*" value=""
+                           placeholder="YYYY" size="4" maxlength="4" name="BIRTHDAY[year]"
+                           id="mce-BIRTHDAY-year"></span>
+        </div>
+    </div>
+
+    <div class="mc-field-group">
+        <input type="text" value="" name="NAME" class="required" id="mce-NAME" placeholder="name">
+    </div>
+
+    <div class="mc-field-group">
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email">
+    </div>
+
+
+    <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>
+
+    <!-- honeypot-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_b1badd77d68346efcf77245e9_e86917a40f" tabindex="-1" value=""></div>
+
+    <div class="clear">
+        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 </form>
 
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='AGE';ftypes[4]='number';fnames[3]='GENDER';ftypes[3]='dropdown';fnames[5]='COUNTRY';ftypes[5]='dropdown';fnames[6]='QMANUALS';ftypes[6]='radio';fnames[7]='QRECEIPTS';ftypes[7]='radio';fnames[8]='QORGANIZE';ftypes[8]='radio';fnames[9]='MWISHLIST';ftypes[9]='radio';fnames[10]='QSUPPORT';ftypes[10]='radio';fnames[11]='QSHARING';ftypes[11]='radio';fnames[12]='QMARKET';ftypes[12]='radio';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-<!--End mc_embed_signup-->
+</div>
 
 
+<script>
+    (function (window, document) {
+        var menu = document.getElementById('menu'),
+                WINDOW_CHANGE_EVENT = ('onorientationchange' in window) ? 'orientationchange' : 'resize';
 
+        function toggleHorizontal() {
+            console.log("toggling horizontal...");
+            [].forEach.call(
+                    document.getElementById('menu').querySelectorAll('.custom-can-transform'),
+                    function (el) {
+                        console.log("found transformable menu");
+                        el.classList.toggle('pure-menu-horizontal');
+                    }
+            );
+            [].forEach.call(
+                    document.getElementById('menu').querySelectorAll('.custom-item-transform'),
+                    function (el) {
+                        console.log("found transformable item");
+                        el.classList.toggle('custom-small-menu-item');
+                    }
+            );
+        };
 
- </div>
+        function toggleMenu() {
+            // set timeout so that the panel has a chance to roll up
+            // before the menu switches states
+            if (menu.classList.contains('open')) {
+                setTimeout(toggleHorizontal, 500);
+            }
+            else {
+                toggleHorizontal();
+            }
+            menu.classList.toggle('open');
+            document.getElementById('toggle').classList.toggle('x');
+        };
 
+        function closeMenu() {
+            if (menu.classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        document.getElementById('toggle').addEventListener('click', function (e) {
+            toggleMenu();
+            e.preventDefault();
+        });
+
+        window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
+    })(this, this.document);
+
+</script>
 {% endblock %}
