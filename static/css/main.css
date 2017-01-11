@@ -15,6 +15,7 @@ body {
     color: #404040;
     background-color: #fbfbfb;
     counter-reset: steps;
+    padding-bottom: 2em;
 }
 
 p, h1, li {
@@ -22,7 +23,7 @@ p, h1, li {
     line-height: 1.6em;
 }
 
-p.small {
+p.small, form small {
     font-size: 0.9em;
     color: #666;
 }
@@ -76,7 +77,7 @@ header {
 
 h2 {
     font-weight: 300;
-    font-size: 1.3em;
+    font-size: 1.4em;
     margin-bottom: 1em;
 }
 
@@ -128,8 +129,36 @@ ol#steps li {
     margin-right: 35px;
 }
 
+h3 {
+    text-align: center;
+}
+
+h3, h4 {
+    margin: 2em 0 1em;
+}
+
+
 form ul {
     list-style-type: none;
+}
+
+form strong {
+    color: #38a696;
+    font-weight: normal;
+}
+
+textarea {
+    display: block;
+}
+
+select {
+    margin: 0.4em;
+    width: 90%;
+}
+
+input {
+    padding: 0.4em;
+    margin: 0.4em;
 }
 
 #q-features input[type=checkbox] {

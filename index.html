@@ -150,7 +150,7 @@
             <p class="accent-color">
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                    <i class="fa fa-camera fa-stack-1x"></i>
+                    <i class="fa fa-rocket fa-stack-1x"></i>
                 </span>
             </p>
             <h2>Easy adding</h2>
@@ -176,16 +176,16 @@
       id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate pure-u-1" target="_blank" novalidate>
 
     <div class="mc-field-group input-group">
-        <h3>Onboarding user 1-500</h3>
-        <p>The first 500 users will get early access to the free Everything app. We want to know what you think is important, so we can
-            make Everything the way you want it to be. Please answer the questions below for early access.</p>
+        <h3>Onboarding the first 500 users</h3>
+        <p>Please let us know who you are and what matters to you by filling out the form below. It will only take a few minutes and in
+            return we will grant you early access to the app give you the opportunity to participate in the development.</p>
         <h4>Question 1/8</h4>
-        <p>We need you to help us prioritize. Please check all the problems below, which Everything should solve for you.</p>
+        <p>We need you to help us prioritize. Please check all the problems below, which Everything should solve for you. Imagine you
+            will pay €1 for each of the features (just imagine, we plan to keep Everything free).</p>
         <ul id="q-features">
             <li class="pure-g">
-                <label for="mce-group[7261]-7261-0" class="pure-u-1 pure-u-md-4-5">We can make it really simple to <strong>keep track of
-                    your receipts and warranties</strong>. Have it all in one app instead of a shoe box so it is always there in case you
-                    need it.</label>
+                <label for="mce-group[7261]-7261-0" class="pure-u-1 pure-u-md-4-5">We can make it really simple to <strong>keep track of your receipts and warranties</strong>. Have it all in one app instead of a
+                    shoe box so it is always there in case you need it.</label>
                 <div class="pure-u-1 pure-u-md-1-5">
                     <input type="checkbox" value="1" name="group[7261][1]" id="mce-group[7261]-7261-0"></div></li>
             <li class="pure-g">
@@ -274,31 +274,35 @@
                 <input type="checkbox" value="32768" name="group[7265][32768]" id="mce-group[7265]-7265-9">
                 <label for="mce-group[7265]-7265-9">Clothing and accessories</label></li>
         </ul>
+        <small>Choose all that apply</small>
     </div>
 
     <div class="mc-field-group size1of2">
         <h4>Question 3/8</h4>
         <label for="mce-ITEMCOUNT">How many things will you keep in Everything?</label>
+        <p>
         <!--<input type="number" name="ITEMCOUNT" class="" value="" id="mce-ITEMCOUNT">-->
         <input type="range" min="0" max="200" value="100" name="ITEMCOUNT" id="mce-ITEMCOUNT" step="5" oninput="outputUpdate(value,
-        '#itemcount-output')">
+        '#itemcount-output')" class="pure-u-5-6 pure-u-md-1-2">
         <output for="mce-ITEMCOUNT" id="itemcount-output">100</output>
+        </p>
 
     </div>
 
     <div class="mc-field-group size1of2">
         <h4>Question 4/8</h4>
-        <label for="mce-DESIRE">How likely are you to use Everything (1-10)</label>
+        <label for="mce-DESIRE">How likely are you to use Everything (1-10)</label><br>
         <!--<input type="number" name="DESIRE" class="" value="" id="mce-DESIRE">-->
         <input type="range" min="0" max="10" value="5" name="DESIRE" id="mce-DESIRE" step="1" oninput="outputUpdate(value,
-        '#desire-output')">
+        '#desire-output')" class="pure-u-5-6 pure-u-md-1-2">
         <output for="mce-DESIRE" id="desire-output">5</output>
     </div>
 
     <div class="mc-field-group">
         <h4>Question 5/8</h4>
         <label for="mce-AVERSION">What would be a reason NOT to use Everything?</label>
-        <input type="text" value="" name="AVERSION" class="" id="mce-AVERSION">
+        <textarea rows="2" cols="50" name="AVERSION" class="" id="mce-AVERSION">
+        </textarea>
     </div>
 
     <div class="mc-field-group input-group">
@@ -309,8 +313,8 @@
                 <input type="checkbox" value="8388608" name="group[7277][8388608]" id="mce-group[7277]-7277-0">
                 <label for="mce-group[7277]-7277-0">I gladly pay extra for high quality</label></li>
             <li>
-                <input type="checkbox" value="8589934592" name="group[7277][8589934592]"
-                       id="mce-group[7277]-7277-1"><label for="mce-group[7277]-7277-1">I am an active bargain hunter</label></li>
+                <input type="checkbox" value="8589934592" name="group[7277][8589934592]" id="mce-group[7277]-7277-1">
+                <label for="mce-group[7277]-7277-1"> I am an active bargain hunter</label></li>
             <li>
                 <input type="checkbox" value="33554432" name="group[7277][33554432]" id="mce-group[7277]-7277-2">
                 <label for="mce-group[7277]-7277-2">My possessions reflect my personality</label></li>
@@ -383,6 +387,8 @@
         <small>Choose all that apply</small>
     </div>
 
+    <h4>About you</h4>
+
     <p>Finally we would like to know some personal details to complete the registration. We will not share any of your information with
         others.</p>
     <div class="mc-field-group">
@@ -433,25 +439,25 @@
         <div class="datefield">
                 <span class="subfield dayfield">
                     <input class="datepart " type="text" pattern="[0-9]*" value=""
-                           placeholder="DD" size="2" maxlength="2" name="BIRTHDAY[day]"
+                           placeholder="DD" size="3" maxlength="2" name="BIRTHDAY[day]"
                            id="mce-BIRTHDAY-day"></span> /
                 <span class="subfield monthfield">
                     <input class="datepart " type="text" pattern="[0-9]*" value=""
-                           placeholder="MM" size="2" maxlength="2" name="BIRTHDAY[month]"
+                           placeholder="MM" size="3" maxlength="2" name="BIRTHDAY[month]"
                            id="mce-BIRTHDAY-month"></span> /
                 <span class="subfield yearfield">
                     <input class="datepart " type="text" pattern="[0-9]*" value=""
-                           placeholder="YYYY" size="4" maxlength="4" name="BIRTHDAY[year]"
+                           placeholder="YYYY" size="5" maxlength="4" name="BIRTHDAY[year]"
                            id="mce-BIRTHDAY-year"></span>
         </div>
     </div>
 
     <div class="mc-field-group">
-        <input type="text" value="" name="NAME" class="required" id="mce-NAME" placeholder="name">
+        <input type="text" value="" name="NAME" class="required pure-u-5-6 pure-u-md-1-2" id="mce-NAME" placeholder="name">
     </div>
 
     <div class="mc-field-group">
-        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email">
+        <input type="email" value="" name="EMAIL" class="required email pure-u-5-6 pure-u-md-1-2" id="mce-EMAIL" placeholder="email">
     </div>
 
 
@@ -465,7 +471,8 @@
         <input type="text" name="b_b1badd77d68346efcf77245e9_e86917a40f" tabindex="-1" value=""></div>
 
     <div class="clear">
-        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        <input type="submit" value="Register for early access" name="subscribe" id="mc-embedded-subscribe" class="button pure-u-5-6
+        pure-u-md-1-2"></div>
 </form>
 
 </div>
