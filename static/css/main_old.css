@@ -1,0 +1,276 @@
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #404040;
+    background-color: #fbfbfb;
+    counter-reset: steps;
+    padding-bottom: 2em;
+}
+
+p, h1, li {
+    margin: 0.4em;
+    line-height: 1.6em;
+}
+
+p.small, form small {
+    font-size: 0.9em;
+    color: #666;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 1.5em;
+    margin: 2em 0 1em;
+    padding: 10px 0;
+    text-align: center;
+}
+
+a#call-to-action {
+    display: block;
+    background-color: #404040;
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    padding: 0.4em 0;
+    margin: 1em 6px;
+}
+
+a#call-to-action:hover {
+    background-color: #000;
+}
+
+em {
+    font-weight: 700;
+}
+
+header {
+    text-align: center;
+}
+
+.content {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.features{
+    background-color: #38a696;
+    color: #fff;
+    margin: 1em 0;
+    padding: 1em 0;
+}
+
+.features > div > div {
+    padding: 1em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.4em;
+    margin-bottom: 1em;
+}
+
+ol#steps {
+    list-style-type: none;
+    margin-bottom: 1em;
+}
+
+ol#steps li:before {
+    padding-left: 11px;
+    padding-top: 3px;
+    margin: 10px;
+    counter-increment: steps;
+    content: counter(steps);
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: #38a696;
+    border-radius: 50%;
+}
+
+ol#steps li {
+    color: #38a696;
+}
+
+.accent-color {
+    color: #38a696;
+}
+
+.center {
+    text-align: center;
+}
+
+#teaserimg {
+    width: 75%;
+    display: inline-block;
+}
+
+.question label {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+.question label input {
+    margin-right: 35px;
+}
+
+h3 {
+    text-align: center;
+}
+
+h3, h4 {
+    margin: 2em 0 1em;
+}
+
+
+form ul {
+    list-style-type: none;
+}
+
+form strong {
+    color: #38a696;
+    font-weight: normal;
+}
+
+textarea {
+    display: block;
+}
+
+select {
+    margin: 0.4em;
+    width: 90%;
+}
+
+input {
+    padding: 0.4em;
+    margin: 0.4em;
+}
+
+#q-features input[type=checkbox] {
+    margin: 10px auto;
+    display: block;
+}
+
+#q-features li {
+    margin-top: 12px;
+    background-color: #fff;
+    padding: 20px 12px 12px;
+    border-bottom: 1px solid #CCC;
+    border-right: 1px solid #DDD;
+}
+
+/*Navigation*/
+
+img#logo{
+    width: 185px;
+    height: 50px;
+    padding-top: 4px;
+}
+
+.custom-wrapper {
+    background-color: #160D06;
+    margin-bottom: 2em;
+    -webkit-font-smoothing: antialiased;
+    height: 4em;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.custom-wrapper.open {
+    height: 22.5em;
+}
+
+.custom-menu-right {
+    text-align: right;
+}
+
+.custom-toggle {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.custom-toggle .bar {
+    background-color: #777;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 47.999em) {
+
+    .custom-menu-right {
+        text-align: left;
+    }
+
+    .custom-toggle {
+        display: block;
+    }
+
+}
+
+.custom-small-menu-item {
+    color: #fff;
+    font-size: 0.7em;
+    padding: 2px 8px;
+}
+
+.custom-small-menu-item .pure-menu-link {
+    padding: 2px 8px;
+}
+
+.custom-small-menu-item .pure-menu-link:hover {
+    background-color: inherit;
+}
+
+/*end navigation*/
