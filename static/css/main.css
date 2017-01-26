@@ -2731,6 +2731,9 @@ header {
   height: 700px;
   overflow: hidden; }
 
+img#icon {
+  display: block; }
+
 @media (min-width: 992px) {
   header {
     height: 800px; } }
