@@ -22,7 +22,7 @@
 {% block content %}
 
 <header class="gradient inverse-light pt-4 mb-5">
-  <img id="icon" src="{{ url_for('static', filename='img/icon-white.png') }}" width="25px" class="mx-auto">
+  <img id="icon" src="{{ url_for('static', filename='img/icon-white.png') }}" width="25" class="mx-auto" alt="logo">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center">
@@ -38,29 +38,29 @@
     <div class="row no-gutters" id="hero-row">
       <div class="col-4">
         <div class="phoneslide sidescreen">
-          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen">
+          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen" alt="glare">
           <a href="{{ url_for('static', filename='img/screens/sharing.png') }}" class="swipebox">
-            <img src="{{ url_for('static', filename='img/screens/sharing.png') }}" class="screen">
+            <img src="{{ url_for('static', filename='img/screens/sharing.png') }}" class="screen" alt="screen left">
           </a>
-          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen">
+          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen" alt="phone">
         </div>
       </div>
       <div class="col-4">
         <div class="phoneslide mainscreen">
-          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen">
+          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen" alt="glare">
           <a href="{{ url_for('static', filename='img/screens/listing.png') }}" class="swipebox">
-            <img src="{{ url_for('static', filename='img/screens/listing.png') }}" class="screen">
+            <img src="{{ url_for('static', filename='img/screens/listing.png') }}" class="screen" alt="screen center">
           </a>
-          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen">
+          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen" alt="phone">
         </div>
       </div>
       <div class="col-4">
         <div class="phoneslide sidescreen">
-          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen">
+          <img src="{{ url_for('static', filename='img/screens/front.png') }}" class="frontscreen" alt="glare">
           <a href="{{ url_for('static', filename='img/screens/item.png') }}" class="swipebox">
-            <img src="{{ url_for('static', filename='img/screens/item.png') }}" class="screen">
+            <img src="{{ url_for('static', filename='img/screens/item.png') }}" class="screen" alt="screen right">
           </a>
-          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen">
+          <img src="{{ url_for('static', filename='img/screens/behind.png') }}" class="backscreen" alt="phone">
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@
       <ul id="q-features">
         <li class="row regular-dark">
           <label for="mce-group[7261]-7261-0" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 We can make it really simple to <strong>keep track of your receipts and warranties</strong>. You will
                 have it all in one app (instead of a shoe box) so it is always there in case you need it.
@@ -149,7 +149,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-check-square-o fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="1" name="group[7261][1]" id="mce-group[7261]-7261-0">
@@ -157,7 +157,7 @@
         </li>
         <li class="row">
           <label for="mce-group[7261]-7261-2" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 There must be a simple way to <strong>organize</strong> our things. That should allow you to make
                 a packing list for the holiday, organize a move or remember where you stored the ice skates.
@@ -165,7 +165,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-tags fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="2" name="group[7261][2]" id="mce-group[7261]-7261-2">
@@ -173,7 +173,7 @@
         </li>
         <li class="row regular-dark">
           <label for="mce-group[7261]-7261-3" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 Why not also keep <strong>your wish list</strong> on Everything? That way you will know what to ask or
                 give for birthdays or receive updates when a product is available or on discount.
@@ -181,7 +181,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-magic fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="8" name="group[7261][8]" id="mce-group[7261]-7261-3">
@@ -189,7 +189,7 @@
         </li>
         <li class="row">
           <label for="mce-group[7261]-7261-4" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 We want to get rid of calls to <strong>customer support</strong> and those <strong>user manuals</strong>
                 in 12 languages. Let's focus on actually getting your question answered: click the item and
@@ -198,7 +198,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-book fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="4" name="group[7261][4]" id="mce-group[7261]-7261-4">
@@ -206,7 +206,7 @@
         </li>
         <li class="row regular-dark">
           <label for="mce-group[7261]-7261-5" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 Your <strong>fire, theft and travel insurances</strong> can become one-click and much more accurate. This
                 should save a lot of time, money, discussion and hassle for all parties.
@@ -214,7 +214,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-shield fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="34359738368" name="group[7261][34359738368]" id="mce-group[7261]-7261-5">
@@ -222,7 +222,7 @@
         </li>
         <li class="row">
           <label for="mce-group[7261]-7261-6" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 We love sharing and it reduces consumption, but we need to <strong>make sharing our things more reliable</strong>.
                 It helps to always know who has borrowed or rented your drill or book and when it is due back.
@@ -230,7 +230,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-retweet fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="16" name="group[7261][16]" id="mce-group[7261]-7261-6">
@@ -238,7 +238,7 @@
         </li>
         <li class="row regular-dark">
           <label for="mce-group[7261]-7261-7" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 Current online <strong>second hand markets</strong> make it hard to find exactly what you want and are
                 not always reliable. Let's make this function better and more direct - a bit like Ticketswap or AirBnB.
@@ -246,7 +246,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-money fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="32" name="group[7261][32]" id="mce-group[7261]-7261-7">
@@ -254,7 +254,7 @@
         </li>
         <li class="row">
           <label for="mce-group[7261]-7261-8" class="col-12 col-md-11 order-md-2">
-            <div class="row">
+            <span class="row">
               <div class="col-12 col-lg-11">
                 The average person loses €260,- worth of property per year, the vast majority never being returned. We need
                 to rethink <strong>lost and found</strong> and increase the odds of getting your camera back.
@@ -262,7 +262,7 @@
               <div class="hidden-md-down col-md-1">
                 <i class="fa fa-search fa-lg"></i>
               </div>
-            </div>
+            </span>
           </label>
           <div class="col-12 col-md-1 text-center order-md-1">
             <input type="checkbox" value="68719476736" name="group[7261][68719476736]" id="mce-group[7261]-7261-8">
