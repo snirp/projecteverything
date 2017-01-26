@@ -19,10 +19,10 @@
 
 {% endblock %}
 
-{% block body %}
+{% block content %}
 
 <header class="gradient inverse-light pt-4 mb-5">
-  <div id="icon"><img src="{{ url_for('static', filename='img/icon-white.png') }}" height="40px" class="ml-4"></div>
+  <img id="icon" src="{{ url_for('static', filename='img/icon-white.png') }}" width="25px" class="mx-auto">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center">
@@ -79,7 +79,7 @@
         <a href="#mc-embedded-subscribe-form" class="button text-uppercase centered max-12 max-md-10">
           Register for early access
         </a>
-        <p class="text-center"><small>The first 500 users to register will get early access to Everything.</small></p>
+        <p class="text-center"><small>The first 500 users will get early access to Everything.</small></p>
       </div>
     </div>
   </div>

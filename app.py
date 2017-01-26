@@ -25,6 +25,10 @@ def confirm():
     return render_template('confirm.html')
 
 
-#launch
+@app.route("/404.html")
+def notfound():
+    return render_template('404.html')
+
+# launch
 if __name__ == "__main__":
     app.run(debug=True)
