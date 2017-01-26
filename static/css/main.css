@@ -2728,7 +2728,7 @@ select, input, textarea {
   line-height: 0; }
 
 header {
-  height: 700px;
+  height: 730px;
   overflow: hidden; }
 
 img#icon {
@@ -2736,7 +2736,7 @@ img#icon {
 
 @media (min-width: 992px) {
   header {
-    height: 800px; } }
+    height: 820px; } }
 .scrollcontainer {
   overflow-x: scroll;
   overflow-y: hidden;
