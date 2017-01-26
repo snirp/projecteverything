@@ -1,0 +1,807 @@
+
+// Table of contents
+//
+// § Branding
+// § Breakpoints
+// § Grids
+// § Typography
+// § Images
+// $ Misc
+
+
+// $ Branding
+// ------------------------------
+
+$color-bg-light: #FFFFFF;
+$color-bg: #FDFDFD;
+$color-bg-dark: #F8F8F8;
+
+$color-text-light: #8E969B;
+$color-text: #5D666B;
+$color-text-dark: #404E55;
+
+$inverse-bg-light: #4F5363;
+$inverse-bg: #3C404D;
+$inverse-bg-dark: #2B2E39;
+
+$inverse-text-light: #FFFFFF;
+$inverse-text: #F8F8F8;
+$inverse-text-dark: #F3F3F3;
+
+$accent-light: #0AEDE5;
+$accent: #1CC6C2;
+$accent-dark: #35ACA8;
+
+// Apply background and foreground individually
+.color-bg-light { background-color: $color-bg-light; }
+.color-bg { background-color: $color-bg; }
+.color-bg-dark { background-color: $color-bg-dark; }
+.color-text-light { color: $color-text-light; }
+.color-text { color: $color-text; }
+.color-text-dark { color: $color-text-dark; }
+.inverse-bg-light { background-color: $inverse-bg-light; }
+.inverse-bg { background-color: $inverse-bg; }
+.inverse-bg-dark { background-color: $inverse-bg-dark; }
+.inverse-text-light { color: $inverse-text-light; }
+.inverse-text { color: $inverse-text; }
+.inverse-text-dark { color: $inverse-text-dark; }
+.accent-bg-light { background-color: $accent-light; }
+.accent-bg { background-color: $accent; }
+.accent-bg-dark { background-color: $accent-dark; }
+.accent-text-light { color: $accent-light; }
+.accent-text { color: $accent; }
+.accent-text-dark { color: $accent-dark; }
+
+// Shortcut classes
+.regular-light {
+  color: $color-text-light;
+  background-color: $color-bg-light;
+}
+.regular {
+  color: $color-text;
+  background-color: $color-bg;
+}
+.regular-dark {
+  color: $color-text-dark;
+  background-color: $color-bg-dark;
+}
+.inverse-light {
+  color: $inverse-text-light;
+  background-color: $inverse-bg-light;
+}
+.inverse {
+  color: $inverse-text;
+  background-color: $inverse-bg;
+}
+.inverse-dark {
+  color: $inverse-text-dark;
+  background-color: $inverse-bg-dark;
+}
+
+
+
+@mixin linear-gradient($angle: 180deg, $stops...) {
+  // default to inverse background gradient if no stops are defined
+  $stops: if(length($stops)==0, ($inverse-bg-light, $inverse-bg-dark), $stops);
+  background: nth(nth($stops, 1), 1);
+  background: -moz-linear-gradient($angle, $stops);
+  background: -webkit-linear-gradient($angle, $stops);
+  background: -o-linear-gradient($angle, $stops);
+  background: -ms-linear-gradient($angle, $stops);
+  background: linear-gradient($angle, $stops);
+}
+//just a test
+.gradient {
+  @include linear-gradient(135deg);
+}
+
+
+// § Normalize
+// -----------------------------
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.03rem;
+  color: $color-text;
+  background-color: $color-bg;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+
+// § Breakpoints
+// -----------------------------
+
+// Based on bootstrap v4.0.0-alpha.6
+// No major changes
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.1.
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($lower, $breakpoints) {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-between($name, $name, $breakpoints) {
+    @content;
+  }
+}
+
+// § Grids
+// -----------------------------
+
+// Based on bootstrap v4.0.0-alpha.6
+// Important changes:
+// + Column modifiers simplified and push and pull are deprecated in favor of the more powerful flexbox ordering.
+// + The make-col-ready mixin is removed since it is not referenced in the code
+// - Responsive containers
+
+
+$grid-columns:               12 !default;
+$grid-gutter-width-base:     30px !default;
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+
+
+@mixin make-container($gutters: $grid-gutter-widths) {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left:  ($gutter / 2);
+    }
+  }
+}
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      width: $container-max-width;
+      max-width: 100%;
+    }
+  }
+}
+
+@mixin make-gutters($gutters: $grid-gutter-widths) {
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left:  ($gutter / 2);
+    }
+  }
+}
+
+@mixin make-row($gutters: $grid-gutter-widths) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      margin-right: ($gutter / -2);
+      margin-left:  ($gutter / -2);
+    }
+  }
+}
+
+@mixin make-max($size, $columns: $grid-columns) {
+  max-width: percentage($size / $columns);
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  // width: percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage($size / $columns);
+}
+
+@mixin make-col-order($column) {
+  order: $column;
+}
+
+@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+
+  %grid-column {
+    position: relative;
+    width: 100%;
+    min-height: 1px; // Prevent columns from collapsing when empty
+
+    @include make-gutters($gutters);
+  }
+
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    // Allow columns to stretch full width below their breakpoints
+
+    @for $i from 1 through $columns {
+      .col#{$infix}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+    .col#{$infix} {
+      @extend %grid-column;
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+      .col#{$infix}-auto {
+        flex: 0 0 auto;
+        width: auto;
+      }
+
+      @for $i from 1 through $columns {
+        .max#{$infix}-#{$i} {
+          @include make-max($i, $columns);
+        }
+        .col#{$infix}-#{$i} {
+          @include make-col($i, $columns);
+        }
+      }
+
+      // `$columns - 1` because offsetting by the width of an entire row isn't possible
+      @for $i from 0 through ($columns - 1) {
+        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-xs-0
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns)
+          }
+        }
+      }
+
+      @for $i from 1 through $columns {
+        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .order-xs-0
+          .order#{$infix}-#{$i} {
+            @include make-col-order($i)
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+.container-fluid {
+  @include make-container();
+}
+
+.row {
+  @include make-row();
+}
+
+@include make-grid-columns();
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+// $ Visibility
+// ------------------------------
+
+.invisible {
+  visibility: hidden !important;
+}
+
+// Responsive visibility utilities
+
+@each $bp in map-keys($grid-breakpoints) {
+  .hidden-#{$bp}-up {
+    @include media-breakpoint-up($bp) {
+      display: none !important;
+    }
+  }
+  .hidden-#{$bp}-down {
+    @include media-breakpoint-down($bp) {
+      display: none !important;
+    }
+  }
+}
+
+
+// Print utilities
+
+.visible-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.visible-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.visible-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.hidden-print {
+  @media print {
+    display: none !important;
+  }
+}
+
+
+// $ Alignment
+// -----------------------------
+
+.align-baseline    { vertical-align: baseline !important; } // Browser default
+.align-top         { vertical-align: top !important; }
+.align-middle      { vertical-align: middle !important; }
+.align-bottom      { vertical-align: bottom !important; }
+.align-text-bottom { vertical-align: text-bottom !important; }
+.align-text-top    { vertical-align: text-top !important; }
+
+
+// $ Margin and Padding
+// ------------------------------
+
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: ( x: 0, y: 0),
+  1: ( x: ($spacer-x * .25), y: ($spacer-y * .25)),
+  2: ( x: ($spacer-x * .5),  y: ($spacer-y * .5)),
+  3: ( x: $spacer-x, y: $spacer-y ),
+  4: ( x: ($spacer-x * 1.5), y: ($spacer-y * 1.5)),
+  5: ( x: ($spacer-x * 3), y: ($spacer-y * 3))
+) !default;
+
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $lengths in $spacers {
+        $length-x: map-get($lengths, x);
+        $length-y: map-get($lengths, y);
+
+        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
+        .#{$abbrev}t#{$infix}-#{$size} { #{$prop}-top:    $length-y !important; }
+        .#{$abbrev}r#{$infix}-#{$size} { #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}b#{$infix}-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l#{$infix}-#{$size} { #{$prop}-left:   $length-x !important; }
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length-x !important;
+          #{$prop}-left:  $length-x !important;
+        }
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top:    $length-y !important;
+          #{$prop}-bottom: $length-y !important;
+        }
+      }
+    }
+
+    // Some special margin utils
+    .m#{$infix}-auto  { margin:        auto !important; }
+    .mt#{$infix}-auto { margin-top:    auto !important; }
+    .mr#{$infix}-auto { margin-right:  auto !important; }
+    .mb#{$infix}-auto { margin-bottom: auto !important; }
+    .ml#{$infix}-auto { margin-left:   auto !important; }
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+      margin-left:  auto !important;
+    }
+    .my#{$infix}-auto {
+      margin-top:    auto !important;
+      margin-bottom: auto !important;
+    }
+  }
+}
+
+
+// $ Typography
+// ------------------------------
+
+// Make sure the required font weights are available and loaded for the specific fonts
+$font-thin: 100;
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
+.font-thin { font-weight: $font-thin; }
+.font-light { font-weight: $font-light; }
+.font-regular { font-weight: $font-regular; }
+.font-medium { font-weight: $font-medium; }
+.font-bold { font-weight: $font-bold; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right;  }
+.text-justify { text-align: justify; }
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.5rem 0 1rem;
+}
+
+h1 {
+  font-weight: inherit;
+  font-size: 1.8rem;
+}
+h2 {
+  font-weight: inherit;
+  font-size: 1.6rem;
+}
+h3 {
+  font-weight: inherit;
+  font-size: 1.4rem;
+}
+h4 {
+  font-weight: inherit;
+  font-size: 1.2rem;
+}
+h5 {}
+h6 {}
+
+p {
+  font-size: 0.875rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+label, li {
+  font-size: 0.875rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+strong, .regular strong, .regular-light strong, .regular-dark strong {
+  color: $accent-dark;
+  font-weight: inherit;
+}
+
+.inverse strong, .inverse-light strong, .inverse-dark strong {
+  color: $accent-light;
+}
+
+a, a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+.button {
+  display: block;
+  padding: 0.3rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: $inverse-text-light;
+  background-color: $accent;
+  text-transform: uppercase;
+  font-weight: 300;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: $accent-dark;
+  cursor: pointer;
+}
+
+// § Lists
+// ------------------------------
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+// $ Images
+// ------------------------------
+
+img {
+}
+
+
+// $ Forms
+// ------------------------------
+
+select, input, textarea {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+// $ Misc
+// ------------------------------
+.no-lineheight {
+  line-height: 0;
+}
+
+
+// $ Custom
+// ------------------------------
+
+header {
+  height: 700px;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  header {
+    height: 800px;
+  }
+}
+
+.scrollcontainer {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+// Hide the glare and phone on small devices
+.frontscreen, .backscreen {
+  display: none;
+}
+
+// Width greater than .scrollcontainer means overflow in x direction
+#hero-row {
+  margin-left: 30px;
+  width: 750px;
+}
+
+div.phoneslide {
+  width: 100%;
+  line-height: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.screen {
+  width: 220px;
+  box-shadow: 5px 5px 10px black;
+  margin-bottom: 15px; // Accomodates the shadow
+}
+
+@media (min-width: 768px) {
+  #hero-row {
+    margin-left: auto;
+    margin-right: auto;
+    width: 92%;
+    max-width: 1200px;
+  }
+
+  .phoneslide {
+  /* To position the absolute elements */
+  position: relative;
+  }
+
+  .phoneslide > img {
+    position: absolute;
+  }
+
+  .phoneslide > img.frontscreen {
+    display: inline;
+    width: 100%;
+    z-index: 9;
+  }
+
+  .phoneslide > img.backscreen {
+    display: inline;
+    width: 100%;
+    z-index: 0;
+    position: relative;
+    // This insures that the parent container gets the proper height (needed for relative positioning of screen.
+    // Make sure that the backscreen is the last image: otherwise it potentially affects the absolute elements.
+  }
+
+  .phoneslide a.swipebox{
+    // The screen image gets centered, allowing for fluid resizing
+    position: absolute;
+    width: 90%;
+    z-index: 1;
+    top: 10%;
+    left: 5%;
+  }
+
+  img.screen {
+    width:100%;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+
+  .mainscreen {
+    max-width: 92%;
+  }
+
+  .sidescreen {
+    max-width: 84%;
+    margin-top: 8%;
+  }
+}
+
+
+
+form small {
+  font-style: italic;
+}
+
+form textarea {
+  display: block;
+  max-width: 100%;
+}
+
+form input[type="range"] {
+  max-width: 70%;
+  width: 400px;
+  margin-right: 0.5rem;
+}
+
+select, #mce-NAME, #mce-EMAIL, #mc-embedded-subscribe {
+  width: 700px;
+}
+
+#q-features input {
+  // Set margin equal to label + li margin to match label text
+  margin-top: 0.75rem;
+}
+
