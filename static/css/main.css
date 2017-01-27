@@ -2728,15 +2728,12 @@ select, input, textarea {
   line-height: 0; }
 
 header {
-  height: 730px;
+  max-height: 850px;
   overflow: hidden; }
 
 img#icon {
   display: block; }
 
-@media (min-width: 992px) {
-  header {
-    height: 820px; } }
 .scrollcontainer {
   overflow-x: scroll;
   overflow-y: hidden;

@@ -677,18 +677,12 @@ select, input, textarea {
 // ------------------------------
 
 header {
-  height: 730px;
+  max-height: 850px;
   overflow: hidden;
 }
 
 img#icon {
   display: block;
-}
-
-@media (min-width: 992px) {
-  header {
-    height: 830px;
-  }
 }
 
 .scrollcontainer {
